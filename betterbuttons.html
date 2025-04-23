@@ -1,0 +1,102 @@
+<h1>JoCalc</h1>
+<h3>Insert number here:</h3>
+<input id="number" type="number" value="0" step="1">
+<h3>Select an Operation nu</h3>
+<operations>
+<button id="addition" type="button">Addition</button>
+<button id="subtraction" type="button">Subtraction</button>
+<button id="multiplication" type="button">Multiplication</button>
+<button id="division" type="button">Division</button>
+</operations>
+<h3>Plug in other number:</h3>
+<input id="othernumber" type="number" value="0" step="1">
+<h3>Result:</h3>
+<div id="result" style="border: 1px solid black; padding: 10px; width: fit-content;">0</div>
+<script>
+    function add(a, b) {
+      return a + b;
+    }
+  
+    function subtract(a, b) {
+      return a - b;
+    }
+  
+    function multiply(a, b) {
+      return a * b;
+    }
+  
+    function divide(a, b) {
+      if (b === 0) {
+        return "Error: Cannot divide by zero";
+      }
+      return a / b;
+    }
+    document.getElementById("addition").addEventListener("click", function () {
+        const num1 = parseFloat(document.getElementById("number").value);
+        const num2 = parseFloat(document.getElementById("othernumber").value);
+        const result = add(num1, num2);
+        document.getElementById("result").textContent = result;
+    });
+    document.getElementById("subtraction").addEventListener("click", function () {
+        const num1 = parseFloat(document.getElementById("number").value);
+        const num2 = parseFloat(document.getElementById("othernumber").value);
+        const result = subtract(num1, num2);
+        document.getElementById("result").textContent = result;
+    });
+    document.getElementById("multiplication").addEventListener("click", function () {
+        const num1 = parseFloat(document.getElementById("number").value);
+        const num2 = parseFloat(document.getElementById("othernumber").value);
+        const result = multiply(num1, num2);
+        document.getElementById("result").textContent = result;
+    });
+    document.getElementById("division").addEventListener("click", function () {
+        const num1 = parseFloat(document.getElementById("number").value);
+        const num2 = parseFloat(document.getElementById("othernumber").value);
+        const result = divide(num1, num2);
+        document.getElementById("result").textContent = result;
+    });
+    // Event listener for the calculate button
+    document.getElementById("calculate").addEventListener("click", function () {
+      const num1 = parseFloat(document.getElementById("number").value);
+      const num2 = parseFloat(document.getElementById("othernumber").value);
+      const operation = document.getElementById("operation").value;
+  
+      let result;
+      switch (operation) {
+        case "addition":
+          result = add(num1, num2);
+          break;
+        case "subtraction":
+          result = subtract(num1, num2);
+          break;
+        case "multiplication":
+          result = multiply(num1, num2);
+          break;
+        case "division":
+          result = divide(num1, num2);
+          break;
+        default:
+          result = "Invalid operation";
+      }
+  
+      document.getElementById("result").textContent = result;
+    });
+  </script>
+  <body style="background-color:blueviolet;"></body>
+  <style>
+    body {
+      color:beige;
+      font-family:fantasy;
+    }
+  h1 {
+    text-align: center;
+  }
+  h3 {
+    text-align: center;
+  }
+  input, select, button, #result {
+    width: 200px;
+    align-items: center;
+    display: block;
+    margin: 0 auto;
+  }
